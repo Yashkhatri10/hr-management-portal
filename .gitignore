@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+node_modules/
+dist/
+.vscode/
+.idea/
+*.db
+*.sqlite
+*.sqlite3
+uploads/
+backend/uploads/
+*.log
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts

@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg[binary]
+pydantic-settings
+python-dotenv
+passlib[argon2]
+python-multipart
+email-validator
+PyJWT[crypto]
+alembic
+openpyxl
+reportlab
+numpy
+opencv-python-headless
+insightface
+onnxruntime
