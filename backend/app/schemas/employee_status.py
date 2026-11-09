@@ -4,7 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 
-EmployeeLifecycleStatus = Literal["Active", "On Notice", "On Leave", "Pending", "Resigned", "Terminated", "Inactive"]
+EmployeeLifecycleStatus = Literal["Active", "On Notice", "On Leave", "Pending", "Terminated", "Inactive"]
 
 
 class EmployeeStatusUpdate(BaseModel):

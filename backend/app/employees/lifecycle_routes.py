@@ -1,5 +1,5 @@
 import json
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -51,11 +51,11 @@ def update_employee_status(
     employee = _employee_or_404(db, employee_id)
     if payload.status == employee.status:
         raise HTTPException(status_code=409, detail="Employee already has this status")
-    if not employee.is_active and payload.status not in {"Resigned", "Terminated", "Inactive"}:
+    if not employee.is_active and payload.status not in {"Terminated", "Inactive"}:
         raise HTTPException(status_code=409, detail="Archived employee cannot be returned to active status here")
     previous_status = employee.status
     employee.status = payload.status
-    employee.is_active = payload.status not in {"Resigned", "Terminated", "Inactive"}
+    employee.is_active = payload.status not in {"Terminated", "Inactive"}
     if not employee.is_active:
         profile = db.query(EmployeeProfile).filter(EmployeeProfile.employee_id == employee.id).first()
         if profile and profile.employment_end_date is None:
@@ -132,8 +132,6 @@ def get_employee_lifecycle(employee_id: int, db: Session = Depends(get_db)):
         if case.case_type == "Probation":
             changes = json.loads(case.changes_json or "{}")
             probation_status = changes.get("decision", "In progress")
-            if changes.get("extension_days") and probation_due:
-                probation_due += timedelta(days=int(changes["extension_days"]))
             break
     if probation_status == "In progress" and probation_due and probation_due < _today():
         probation_status = "Review overdue"
@@ -276,12 +274,12 @@ def complete_offboarding(
 
     employee = _employee_or_404(db, case.employee_id)
     previous_status = employee.status
-    employee.status = "Resigned"
+    employee.status = "Inactive"
     employee.is_active = False
     db.add(EmployeeStatusEvent(
         employee_id=employee.id,
         previous_status=previous_status,
-        new_status="Resigned",
+        new_status="Inactive",
         effective_date=date.fromisoformat(last_working_date) if last_working_date else _today(),
         reason=f"Offboarding completed for resignation case #{case.id}",
         changed_by=_actor.email,

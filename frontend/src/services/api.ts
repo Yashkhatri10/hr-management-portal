@@ -292,7 +292,7 @@ export type EmployeeStatusEvent = {
   created_at: string;
 };
 
-export type EmployeeLifecycleStatus = 'Active' | 'On Notice' | 'On Leave' | 'Pending' | 'Resigned' | 'Terminated' | 'Inactive';
+export type EmployeeLifecycleStatus = 'Active' | 'On Notice' | 'On Leave' | 'Pending' | 'Terminated' | 'Inactive';
 
 export async function updateEmployeeLifecycleStatus(employeeId: number, payload: { status: EmployeeLifecycleStatus; effective_date: string; reason: string }): Promise<EmployeeStatusEvent> {
   return request<EmployeeStatusEvent>(`/employees/${employeeId}/status`, { method: 'PATCH', body: JSON.stringify(payload) });

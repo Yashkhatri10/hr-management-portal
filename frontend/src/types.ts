@@ -17,7 +17,7 @@ export type Employee = {
   role: string;
   department: string;
   location: string;
-  status: 'Active' | 'On Notice' | 'On Leave' | 'Pending' | 'Resigned' | 'Terminated' | 'Inactive';
+  status: 'Active' | 'On Notice' | 'On Leave' | 'Pending' | 'Terminated' | 'Inactive';
   manager: string;
   phone?: string | null;
   start_date?: string | null;

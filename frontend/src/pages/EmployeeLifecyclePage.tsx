@@ -167,7 +167,7 @@ export function EmployeeLifecyclePage({ employees, onRefresh }: Props) {
               <form style={styles.statusForm} onSubmit={changeStatus}>
                 <select aria-label="Employee status" value={status} style={styles.input} onChange={(event) => setStatus(event.target.value as EmployeeLifecycleStatus)}>
                   <option value="Active">Active</option><option value="On Notice">On notice</option><option value="On Leave">On leave</option>
-                  <option value="Resigned">Resigned</option><option value="Terminated">Terminated</option><option value="Inactive">Inactive</option>
+                  <option value="Terminated">Terminated</option><option value="Inactive">Inactive</option>
                 </select>
                 <input aria-label="Status effective date" required type="date" value={statusDate} style={styles.input} onChange={(event) => setStatusDate(event.target.value)} />
                 <input aria-label="Status change reason" required minLength={3} value={statusReason} placeholder="Reason" style={styles.input} onChange={(event) => setStatusReason(event.target.value)} />

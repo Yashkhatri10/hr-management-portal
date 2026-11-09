@@ -31,7 +31,7 @@ Employee profile fields are limited to operational contact information and emerg
 
 ## Employee lifecycle
 
-HR Managers can use the Lifecycle page for probation reviews, transfer/promotion proposals, resignation approval, exit-clearance checklist completion, and offboarding. Lifecycle cases are retained as history. Transfers and promotions are applied when their approved effective date arrives and are marked Applied. Resignation does not disable access immediately: HR approval starts exit clearance, and account access is disabled only after every clearance task is completed and HR completes offboarding. The current probation period is a configurable-by-code baseline of 180 days; confirm the organization's policy before use. Salary in lifecycle proposals is retained as a text value for history only and is not wired to payroll.
+HR Managers can use the Lifecycle page for probation reviews, transfer/promotion proposals, resignation approval, exit-clearance checklist completion, and offboarding. Lifecycle cases are retained as history. Transfers and promotions are applied when their approved effective date arrives and are marked Applied. Resignation does not disable access immediately: HR approval starts exit clearance, and account access is disabled only after every clearance task is completed and HR completes offboarding. Completed offboarding uses the canonical employee status `Inactive`; the resignation case and status history retain the reason and lifecycle record. The current probation period is a configurable-by-code baseline of 180 days; confirm the organization's policy before use. Salary in lifecycle proposals is retained as a text value for history only and is not wired to payroll.
 
 ## Paid leave tracking
 
