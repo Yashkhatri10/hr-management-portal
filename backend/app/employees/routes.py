@@ -235,18 +235,16 @@ def get_employee_onboarding(employee_id: int, db: Session = Depends(get_db), _hr
     if employee is None:
         raise HTTPException(status_code=404, detail="Employee not found")
     profile = db.query(EmployeeProfile).filter(EmployeeProfile.employee_id == employee_id).first()
-    if profile is None:
-        raise HTTPException(status_code=404, detail="Onboarding profile not found")
     tasks = db.query(OnboardingTask).filter(OnboardingTask.employee_id == employee_id).order_by(OnboardingTask.id).all()
     completed = sum(1 for task in tasks if task.status == "Completed")
     return {
         "employee_id": employee_id,
-        "phone": profile.phone,
-        "start_date": profile.start_date,
-        "employment_type": profile.employment_type,
-        "emergency_contact_name": profile.emergency_contact_name,
-        "emergency_contact_relationship": profile.emergency_contact_relationship,
-        "emergency_contact_phone": profile.emergency_contact_phone,
+        "phone": profile.phone if profile else None,
+        "start_date": profile.start_date if profile else None,
+        "employment_type": profile.employment_type if profile else None,
+        "emergency_contact_name": profile.emergency_contact_name if profile else None,
+        "emergency_contact_relationship": profile.emergency_contact_relationship if profile else None,
+        "emergency_contact_phone": profile.emergency_contact_phone if profile else None,
         "progress_percent": round((completed / len(tasks)) * 100) if tasks else 0,
         "tasks": tasks,
     }

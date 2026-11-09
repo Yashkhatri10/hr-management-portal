@@ -25,8 +25,8 @@ class OnboardingTaskOut(BaseModel):
 class OnboardingOut(BaseModel):
     employee_id: int
     phone: str | None
-    start_date: date
-    employment_type: str
+    start_date: date | None
+    employment_type: str | None
     emergency_contact_name: str | None
     emergency_contact_relationship: str | None
     emergency_contact_phone: str | None

@@ -87,8 +87,8 @@ export function OnboardingPage({ employees, onEmployeeActivated }: OnboardingPag
             <div style={styles.profileGrid}>
               <div><span style={styles.label}>Role</span><strong>{selectedEmployee.role}</strong></div>
               <div><span style={styles.label}>Department</span><strong>{selectedEmployee.department}</strong></div>
-              <div><span style={styles.label}>Start date</span><strong>{onboarding.start_date}</strong></div>
-              <div><span style={styles.label}>Employment</span><strong>{onboarding.employment_type}</strong></div>
+              <div><span style={styles.label}>Start date</span><strong>{onboarding.start_date || 'Not provided'}</strong></div>
+              <div><span style={styles.label}>Employment</span><strong>{onboarding.employment_type || 'Not provided'}</strong></div>
               <div><span style={styles.label}>Phone</span><strong>{onboarding.phone || 'Not provided'}</strong></div>
               <div><span style={styles.label}>Emergency contact</span><strong>{onboarding.emergency_contact_name ? `${onboarding.emergency_contact_name}${onboarding.emergency_contact_relationship ? ` (${onboarding.emergency_contact_relationship})` : ''} · ${onboarding.emergency_contact_phone || 'phone not provided'}` : 'Not provided'}</strong></div>
             </div>

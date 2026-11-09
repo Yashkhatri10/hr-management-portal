@@ -350,8 +350,8 @@ export type OnboardingTask = {
 export type OnboardingDetails = {
   employee_id: number;
   phone: string | null;
-  start_date: string;
-  employment_type: string;
+  start_date: string | null;
+  employment_type: string | null;
   emergency_contact_name: string | null;
   emergency_contact_relationship: string | null;
   emergency_contact_phone: string | null;
